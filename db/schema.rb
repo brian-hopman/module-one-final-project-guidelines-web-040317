@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2) do
 
   create_table "stations", force: :cascade do |t|
     t.string "station_name"
-    t.string "burough"
+    t.string "borough"
   end
 
   create_table "trains", force: :cascade do |t|

@@ -4,26 +4,34 @@ require "sinatra/activerecord"
 require 'rake'
 require 'pry'
 require 'csv'
-require 'SQLite3'
+require 'sqlite3'
 
-@db = SQLite3::Database.new ":memory:"
+# require_relative '../app/models/station.rb'
+# require_relative '../app/models/train.rb'
+# require_relative '../db/seed.rb'
 
-@db.execute
-  ("CREATE TABLE IF NOT EXISTS train_info
-          (id INTEGER PRIMARY KEY,
-          station_id INTEGER,
-          complex_id INTEGER,
-          GTFS_stop_id TEXT,
-          division TEXT,
-          lines TEXT,
-          stop_lines TEXT,
-          borough TEXT,
-          daytime_routes TEXT,
-          structure TEXT,
-          GTFS_latitude NUMERIC,
-          GTFS_longitude NUMERIC);")
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'db/development.sqlite')
+require_all 'app'
+#
+# DB = {:conn => SQLite3::CSV.new("db/train_info.csv")}
 
-Train.make_db(@db)
+
+#
+# DB[:conn].execute("CREATE TABLE IF NOT EXISTS train_info
+#           (id INTEGER PRIMARY KEY,
+#           station_id INTEGER,
+#           complex_id INTEGER,
+#           GTFS_stop_id TEXT,
+#           division TEXT,
+#           lines TEXT,
+#           stop_lines TEXT,
+#           borough TEXT,
+#           daytime_routes TEXT,
+#           structure TEXT,
+#           GTFS_latitude NUMERIC,
+#           GTFS_longitude NUMERIC);")
+
+# Train.make_db(@db)
 
 
 # connection_details = CSV::load(File.open('train_info.csv'))
