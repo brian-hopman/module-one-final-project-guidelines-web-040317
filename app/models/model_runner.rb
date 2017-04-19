@@ -12,6 +12,10 @@ class ModelRunner
     @var = gets.chomp
   end
 
+  def returns_var
+    @var
+  end
+
   def run
     asks_for_starting_station
     gets_stations
