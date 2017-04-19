@@ -10,16 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
+
+  create_table "boroughs", force: :cascade do |t|
+    t.string  "borough"
+    t.integer "station_id"
+    t.integer "route_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "line"
+    t.string "route"
+  end
 
   create_table "stations", force: :cascade do |t|
     t.string "station_name"
-    t.string "borough"
-  end
-
-  create_table "trains", force: :cascade do |t|
-    t.string "line"
-    t.string "route"
   end
 
 end

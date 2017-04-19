@@ -1,6 +1,7 @@
-class Train < ActiveRecord::Base
+class Route < ActiveRecord::Base
 
-  has_many :stations
+  has_many :borough
+  has_many :station, through: :borough
   # has_many :arrivals, through: :stations
 
   # attr_accessor :line, :route

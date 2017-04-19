@@ -1,7 +1,7 @@
-class Trains < ActiveRecord::Migration
+class Routes < ActiveRecord::Migration
 
   def change
-    create_table :trains do |t|
+    create_table :routes do |t|
       t.string :line
       t.string :route
     end
