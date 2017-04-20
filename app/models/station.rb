@@ -1,7 +1,9 @@
 class Station < ActiveRecord::Base
 
-    belongs_to :borough
-    has_many :routes, through: :borough
+  belongs_to :borough
+
+  has_many :line_stations
+  has_many :lines, through: :line_stations
 
 
   # attr_accessor :station_name, :borough
