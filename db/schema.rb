@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 20170420144155) do
 
-  create_table "stations", force: :cascade do |t|
-    t.string "station_name"
-    t.string "burough"
+  create_table "boroughs", force: :cascade do |t|
+    t.string "borough_name"
   end
 
-  create_table "trains", force: :cascade do |t|
-    t.string "line"
-    t.string "route"
+  create_table "line_stations", force: :cascade do |t|
+    t.integer "station_id"
+    t.integer "line_id"
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string "line_name"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string  "station_name"
+    t.integer "borough_id"
   end
 
 end
