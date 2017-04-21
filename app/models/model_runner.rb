@@ -2,6 +2,8 @@ require "pry"
 
 class ModelRunner
 
+  attr_accessor :station_name
+
   def asks_for_borough
     puts "Hello! Welcome to a very, very LEAN MTA App."
     puts "What borough are traveling from?"
@@ -25,7 +27,7 @@ class ModelRunner
   end
 
   def gets_station
-    @station = gets.chomp.capitalize
+    @station = gets.chomp
   end
 
   def shows_lines
@@ -37,6 +39,17 @@ class ModelRunner
     end
   end
 
+  def run_again
+    puts "Would you like to run another query (Y/N)?"
+    @answer = gets.chomp
+    if @answer == "#{'Y'}"
+      run
+    else
+      puts "Fine. Bye."
+    end
+  end
+
+
   def run
     asks_for_borough
     gets_borough
@@ -44,6 +57,7 @@ class ModelRunner
     asks_for_station
     gets_station
     shows_lines
+    run_again
   end
 
 
